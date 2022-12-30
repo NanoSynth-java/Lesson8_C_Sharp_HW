@@ -9,60 +9,183 @@
 // 8 4 4 2
 
 
-Console.WriteLine("Введите кол-во строк");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите кол-во столбцов");
-int cols = Convert.ToInt32(Console.ReadLine());
-int[,] FillArray(int rows, int cols, int min, int max)
-{
-    int[,] array = new int[cols, rows];
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
-        {
-            array[i,j] = new Random().Next(min, max + 1); 
-        }
-    }
-    return array;
-}
+// Console.WriteLine("Введите кол-во строк");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите кол-во столбцов");
+// int cols = Convert.ToInt32(Console.ReadLine());
+// int[,] FillArray(int rows, int cols, int min, int max)
+// {
+//     int[,] array = new int[cols, rows];
+//     for (int i = 0; i < rows; i++)
+//     {
+//         for (int j = 0; j < cols; j++)
+//         {
+//             array[i,j] = new Random().Next(min, max + 1); 
+//         }
+//     }
+//     return array;
+// }
 
 
-void PrintArray(int [,] array)
+// void PrintArray(int [,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write(array[i,j] + "\t");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
+
+// int [,] matrix = FillArray(rows, cols, 1, 100);
+
+
+
+// void SortArray(int[,] array)
+// {
+//     int temp;
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             for (int k = j+1; k < array.GetLength(1); k++)
+//             {
+//                 if (array[i,j] > array[i,k])
+//                 {
+//                     temp = array[i,j];
+//                     array[i,j] = array[i,k];
+//                     array[i,k] = temp;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// PrintArray(matrix);
+// SortArray(matrix);
+// PrintArray(matrix);
+
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+// Например, задан массив:
+
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+
+// Console.WriteLine("Введите кол-во строк");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите кол-во столбцов");
+// int cols = Convert.ToInt32(Console.ReadLine());
+// int[,] FillArray(int rows, int cols, int min, int max)
+// {
+//     int[,] array = new int[cols, rows];
+//     for (int i = 0; i < rows; i++)
+//     {
+//         for (int j = 0; j < cols; j++)
+//         {
+//             array[i, j] = new Random().Next(min, max + 1);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write(array[i, j] + "\t");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
+
+// void MinSumElementsInRow(int[,] array)
+// {
+//     int sum = int.MaxValue;
+//     int index = 0;
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         int temp = 0;
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             temp += array[i, j];
+//         }
+//         if (temp < sum)
+//         {
+//             sum = temp;
+//             index = i + 1;
+//         }
+//     }
+//     Console.WriteLine("Строка: " + index + " Сумма - " + sum);
+//     Console.WriteLine();
+//     Console.ReadKey();
+
+// }
+
+// int[,] matrix = FillArray(rows, cols, 1, 10);
+// PrintArray(matrix);
+// MinSumElementsInRow(matrix);
+
+// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+// Например, даны 2 матрицы:
+// 1 2 | 3 4
+// 5 2 | 3 3
+// Результирующая матрица будет:
+// 18 20
+// 15 18
+
+
+int[,] arrayA = {
+    {2,4},
+    {3,2}
+};
+int[,] arrayB = {
+    {3,4},
+    {3,3}
+};
+
+void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(array[i,j] + "\t");
+            Console.Write(array[i, j] + "\t");
         }
         Console.WriteLine();
     }
     Console.WriteLine();
 }
 
-int [,] matrix = FillArray(rows, cols, 1, 10);
+PrintArray(arrayA);
+PrintArray(arrayB);
 
+int [,] result = new int[arrayA.GetLength(0), arrayB.GetLength(1)];
 
-
-void SortArray(int[,] array)
+int[,] TwoMatrice(int[,] arrayA, int[,] arrayB)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+
+    for (int i = 0; i < arrayA.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < arrayB.GetLength(1); j++)
         {
-            for (int k = j + 1; k < array.GetLength(1); k++)
+            for (int k = 0; k < arrayA.GetLength(1); k++)
             {
-                if (array[i,j] < array[i,k])
-                {
-                    int temp = array[i,j];
-                    array[i,j] = array[i,k];
-                    array[i,k] = temp;
-                }
+                result[i, j] += arrayA[i, k] * arrayB[k, j];
+
             }
         }
     }
+    return result;
 }
-
-PrintArray(matrix);
-SortArray(matrix);
-PrintArray(matrix);
+TwoMatrice(arrayA, arrayB);
+PrintArray(result);
